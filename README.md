@@ -30,6 +30,6 @@ https://example.com/harmonychat-api/v1 (so the BasePath is "/harmonychat-api/v1"
 * /common-details/get?detailType="friendsOrChannels"&unameOrServerID="tux"&passwd="usersPassword" - Get list of channels for server or friends. Passwd is not needed for the case of listing server channels, as demonstrated here, but *is* needed for listing a persons friends with friendship IDs next to them (Example `tux - ${randomizedFriendshipID}`). 
 * /common-details/create?detailType="friendsOrChannels"&serverIdOrUname="tux"&selfPasswd="usersPassword"&friendUsernameOrChannelName="penny" - creates a random friendship/channel ID (friendship and channel IDs are interchangeable in the API), freindship/channel same for the friend username and self username if "friendUsernameOrChannelName" is a person's username. if it's actually a channel name, add the channel named with the nammed passed through "friendUsernameOrChannelName" to the server "serverIdOrUname" but only if it's a valid server and the user credentials match those of the a server admin.
 
-### Server
+### Server (guild) creation
 
 * /server/create?serverName="tux's igloo"&uname="tux"&passwd="usersPassword" - Creates server with random server ID and server name of the serverName variable, sets the first admin in the admins dictionary to a username (tux) and a password (usersPassword, as always this should be encoded on the server side, replacing usersPassword with the deencoded password!)
