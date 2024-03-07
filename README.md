@@ -12,8 +12,8 @@ https://example.com/harmonychat-api/v1 (so the BasePath is "/harmonychat-api/v1"
 
 ## Login/regeister system (auth)
 
-* /auth/register?uname="sans"&passwd="sha256DecodedPassword" - Registers username "sans" with a sha256 encoded password. (Password should be encoded server-side using modern JS standards!)
-* /auth/login?uname="serif"&passwd="sha256DecodedPassword" - attempts to log in as serif
+* /auth/register?uname="sans"&passwd="usersPassword" - Registers username "sans" with a sha256 encoded password. (Password should be encoded server-side using modern JS standards!)
+* /auth/login?uname="serif"&passwd="usersPassword" - attempts to log in as serif
 
 ### Messages read (get)
 
@@ -22,14 +22,14 @@ https://example.com/harmonychat-api/v1 (so the BasePath is "/harmonychat-api/v1"
 
 ### Messages post
 
-* /msgs/post?id=channelOrFriendshipID&uname="sans"&passwd="sha256DecodedPassword"&postIsCall=false&post="Hello world!" - Posts as sans the message "Hello, world!", verifies by checking the global "let" variable "currentPassword" in the serverside code.
-* /msgs/post?id=channelOrFriendshipID&uname="sans"&passwd="sha256DecodedPassword"&postIsCall=true - Posts a Jitsi call to the channel ID. Uses "https://meet.jit.si" instance followed by a random 6 word menomic, seperated by "-" symbols. Example output: "https://meet.jit.si/doge-lord-node-sparky-elon-rocket"
+* /msgs/post?id=channelOrFriendshipID&uname="sans"&passwd="usersPassword"&postIsCall=false&post="Hello world!" - Posts as sans the message "Hello, world!", verifies by checking the global "let" variable "currentPassword" in the serverside code.
+* /msgs/post?id=channelOrFriendshipID&uname="sans"&passwd="usersPassword"&postIsCall=true - Posts a Jitsi call to the channel ID. Uses "https://meet.jit.si" instance followed by a random 6 word menomic, seperated by "-" symbols. Example output: "https://meet.jit.si/doge-lord-node-sparky-elon-rocket"
 
 ### Server and person details
 
-* /common-details/get?detailType="friendsOrChannels"&unameOrServerID="tux"&passwd="sha256DecodedPassword" - Get list of channels for server or friends. Passwd is not needed for the case of listing server channels, as demonstrated here, but *is* needed for listing a persons friends with friendship IDs next to them (Example `tux - ${randomizedFriendshipID}`). 
-* /common-details/create?detailType="friendsOrChannels"&serverIdOrUname="tux"&selfPasswd="sha256DecodedPassword"&friendUsernameOrChannelName="penny" - creates a random friendship/channel ID (friendship and channel IDs are interchangeable in the API), freindship/channel same for the friend username and self username if "friendUsernameOrChannelName" is a person's username. if it's actually a channel name, add the channel named with the nammed passed through "friendUsernameOrChannelName" to the server "serverIdOrUname" but only if it's a valid server and the user credentials match those of the a server admin.
+* /common-details/get?detailType="friendsOrChannels"&unameOrServerID="tux"&passwd="usersPassword" - Get list of channels for server or friends. Passwd is not needed for the case of listing server channels, as demonstrated here, but *is* needed for listing a persons friends with friendship IDs next to them (Example `tux - ${randomizedFriendshipID}`). 
+* /common-details/create?detailType="friendsOrChannels"&serverIdOrUname="tux"&selfPasswd="usersPassword"&friendUsernameOrChannelName="penny" - creates a random friendship/channel ID (friendship and channel IDs are interchangeable in the API), freindship/channel same for the friend username and self username if "friendUsernameOrChannelName" is a person's username. if it's actually a channel name, add the channel named with the nammed passed through "friendUsernameOrChannelName" to the server "serverIdOrUname" but only if it's a valid server and the user credentials match those of the a server admin.
 
 ### Server
 
-* /server/create?serverName="tux's igloo"&uname="tux"&passwd="sha256DecodedPassword" - Creates server with random server ID and server name of the serverName variable, sets the first admin in the admins dictionary to a username (tux) and a password (sha256DecodedPassword, as always this should be encoded on the server side, replacing sha256DecodedPassword with the deencoded password!)
+* /server/create?serverName="tux's igloo"&uname="tux"&passwd="usersPassword" - Creates server with random server ID and server name of the serverName variable, sets the first admin in the admins dictionary to a username (tux) and a password (usersPassword, as always this should be encoded on the server side, replacing usersPassword with the deencoded password!)
